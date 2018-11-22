@@ -4,7 +4,7 @@
 const allCrits = [];
 
 // crit = critter
-// constructor
+// constructors
 function Creature(crit){
   this.title = crit.title;
   this.image_url = crit.image_url;
@@ -31,6 +31,30 @@ Creature.prototype.render = function() {
   $clone.attr('class', this.name);
 }
 
+Creature.prototype.rendOption = function() {
+  $('select').append('<option>'+this.keyword+'</option>');
+  $('option').attr('id', this.keyword);
+  // let $clone = $('option[class="clone"]');
+
+  // let creatureKeyword = $('#keyword').html();
+  // $clone.html(creatureKeyword);
+  // $something.attr('id',this.keyword);
+  // $clone.
+}
+
+/*
+how to take page-1.keyword and push into dropdown
+var select = $'<select></select>')
+cannot use array, or do so without adding multiple items
+*/
+//select box filtering - populate data from page-1 first
+// $('select[name="keyword"]').on('change',function(){
+//   let $selection = $(this).val();
+//   $('img').hide()
+//   $(`img[]`)
+// }
+// )
+
 function readJson () {
   $.get('data/page-1.json', 'json')
     .then(data => {
@@ -41,8 +65,10 @@ function readJson () {
     .then(() => {
       allCrits.forEach(creature => {
         creature.render();
+        creature.rendOption();
       })
     })
+    
 
 }
 
