@@ -32,14 +32,15 @@ Creature.prototype.render = function() {
 }
 
 Creature.prototype.rendOption = function() {
-  $('select').append('<option>'+this.keyword+'</option>');
-  $('option').attr('id', this.keyword);
-  // let $clone = $('option[class="clone"]');
+  $('select').append('<option class="drop">'+this.keyword+'</option>');
+  let $drop = $('option[class="drop"]');
 
-  // let creatureKeyword = $('#keyword').html();
-  // $clone.html(creatureKeyword);
-  // $something.attr('id',this.keyword);
-  // $clone.
+  // let creatureKeyword = $('#drop').html();
+  // $drop.html(creatureKeyword);
+  $drop.attr('value', this.keyword);
+
+  $drop.removeClass('drop');
+  $drop.attr('id', this.keyword);
 }
 
 /*
