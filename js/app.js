@@ -28,33 +28,33 @@ Creature.prototype.render = function() {
   $clone.find('p').text(this.description);
 
   $clone.removeClass('clone');
-  $clone.attr('class', this.name);
+  $clone.attr('class', this.title).attr('id', this.keyword);
 }
 
+// this prototype populates the dropdown and removes and inputs keywords only once.
+// 11/23 ... working on the 'input only once' part.
 Creature.prototype.rendOption = function() {
   $('select').append('<option class="drop">'+this.keyword+'</option>');
   let $drop = $('option[class="drop"]');
-
-  // let creatureKeyword = $('#drop').html();
-  // $drop.html(creatureKeyword);
   $drop.attr('value', this.keyword);
 
   $drop.removeClass('drop');
   $drop.attr('id', this.keyword);
 }
 
-/*
-how to take page-1.keyword and push into dropdown
-var select = $'<select></select>')
-cannot use array, or do so without adding multiple items
-*/
-//select box filtering - populate data from page-1 first
-// $('select[name="keyword"]').on('change',function(){
+//select box filtering
+$('select[name="keyword"]').on('change',function(){
+  let $selection = $(this).val();
+  $('main div').hide()
+  $(`div[value="${$selection}"]`).show()
+  console.log($selection);
+})
+// $('select[name="icecream"]').on('change', function() {
 //   let $selection = $(this).val();
 //   $('img').hide()
-//   $(`img[]`)
-// }
-// )
+//   $(`img[data-flavor="${$selection}"]`).show()
+// })
+
 
 function readJson () {
   $.get('data/page-1.json', 'json')
