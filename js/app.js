@@ -45,8 +45,9 @@ Creature.prototype.rendOption = function() {
 //select box filtering
 $('select[name="keyword"]').on('change',function(){
   let $selection = $(this).val();
+  console.log($(this).val());
   $('main div').hide()
-  $(`div[value="${$selection}"]`).show()
+  $(`div[id="${$selection}"]`).show()
   console.log($selection);
 })
 // $('select[name="icecream"]').on('change', function() {
